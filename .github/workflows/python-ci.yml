@@ -1,26 +1,22 @@
 name: Python CI
 
-on:
-  push:
-  pull_request:
+on: [push]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
       - name: Install dependencies
         run: |
-          pip install pytest
+          pip install requests
 
-      - name: Run demo file
+      - name: Trigger dependency failure
         run: |
-          python demo_failure.py
+          python -c "import httpx"

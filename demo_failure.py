@@ -1,3 +1,3 @@
 import httpx
 
-print("NeuroCI Demo")
+print("NeuroCI Demo v2")
